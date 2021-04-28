@@ -1,0 +1,120 @@
+fileFormatVersion: 2
+guid: ead19b64c58b11e4a830925a07ad2a7b
+timeCreated: 1441202951
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Wheel002
+    100002: Wheel01
+    100004: //RootNode
+    100006: Wheel_back
+    100008: Wheel_back001
+    100010: chunk01
+    100012: chunk02
+    100014: chunk03
+    100016: chunk04
+    100018: Stick_L
+    100020: Stick_R
+    400000: Wheel002
+    400002: Wheel01
+    400004: //RootNode
+    400006: Wheel_back
+    400008: Wheel_back001
+    400010: chunk01
+    400012: chunk02
+    400014: chunk03
+    400016: chunk04
+    400018: Stick_L
+    400020: Stick_R
+    2300000: Wheel002
+    2300002: Wheel01
+    2300004: //RootNode
+    2300006: Wheel_back
+    2300008: Wheel_back001
+    2300010: chunk01
+    2300012: chunk02
+    2300014: chunk03
+    2300016: chunk04
+    2300018: Stick_L
+    2300020: Stick_R
+    3300000: Wheel002
+    3300002: Wheel01
+    3300004: //RootNode
+    3300006: Wheel_back
+    3300008: Wheel_back001
+    3300010: chunk01
+    3300012: chunk02
+    3300014: chunk03
+    3300016: chunk04
+    3300018: Stick_L
+    3300020: Stick_R
+    4300000: Wooden_wagon
+    4300002: Wheel002
+    4300004: Wheel01
+    4300006: Wheel_back
+    4300008: Wheel_back001
+    4300010: chunk01
+    4300012: chunk02
+    4300014: chunk04
+    4300016: chunk03
+    4300018: Stick_R
+    4300020: Stick_L
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
