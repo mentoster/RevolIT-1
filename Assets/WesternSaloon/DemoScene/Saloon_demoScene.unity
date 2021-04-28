@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5368985, g: 0.5368198, b: 0.55709404, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -1802,7 +1802,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -2416,7 +2420,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -3352,7 +3360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -3422,7 +3434,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
-  m_BlendDistance: 1
+  m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -4012,7 +4024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -5225,7 +5241,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -10614,7 +10634,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
-  m_BlendDistance: 1
+  m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -10749,7 +10769,7 @@ MonoBehaviour:
       automaticScale: 1
       viewerScale: 1
     type: 0
-    mode: 1
+    mode: 0
     realtimeMode: 1
     lighting:
       multiplier: 1
@@ -10907,7 +10927,7 @@ MonoBehaviour:
     camera:
       camera: 0
   m_ProxyVolume: {fileID: 0}
-  m_BakedTexture: {fileID: 0}
+  m_BakedTexture: {fileID: 8900000, guid: 68e74b4809fcae34d8dfa6069378809b, type: 3}
   m_CustomTexture: {fileID: 0}
   m_BakedRenderData:
     m_WorldToCameraRHS:
@@ -11208,7 +11228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -11714,107 +11738,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 456a6e03d8a67fb41865369cd05bf0ac, type: 3}
---- !u!114 &649745489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  rotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
-  exposure:
-    m_OverrideState: 0
-    m_Value: 0
-  multiplier:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxColor:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: 0, z: 0}
-  desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
-  updateMode:
-    m_OverrideState: 0
-    m_Value: 0
-  updatePeriod:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  includeSunInBaking:
-    m_OverrideState: 0
-    m_Value: 0
-  hdriSky:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
-  enableBackplate:
-    m_OverrideState: 0
-    m_Value: 0
-  backplateType:
-    m_OverrideState: 0
-    m_Value: 0
-  groundLevel:
-    m_OverrideState: 0
-    m_Value: 0
-  scale:
-    m_OverrideState: 0
-    m_Value: {x: 32, y: 32}
-  projectionDistance:
-    m_OverrideState: 0
-    m_Value: 16
-    min: 0.0000001
-  plateRotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  plateTexRotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  plateTexOffset:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: 0}
-  blendAmount:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 100
-  shadowTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  pointLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
-  dirLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
-  rectLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
 --- !u!1 &651584578
 GameObject:
   m_ObjectHideFlags: 0
@@ -11873,7 +11796,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
-  m_BlendDistance: 1
+  m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -11994,7 +11917,7 @@ MonoBehaviour:
       automaticScale: 1
       viewerScale: 1
     type: 0
-    mode: 1
+    mode: 0
     realtimeMode: 1
     lighting:
       multiplier: 1
@@ -12152,7 +12075,7 @@ MonoBehaviour:
     camera:
       camera: 0
   m_ProxyVolume: {fileID: 0}
-  m_BakedTexture: {fileID: 0}
+  m_BakedTexture: {fileID: 8900000, guid: d4c47423a11692b458abcee6326518fe, type: 3}
   m_CustomTexture: {fileID: 0}
   m_BakedRenderData:
     m_WorldToCameraRHS:
@@ -12859,7 +12782,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -14940,6 +14867,107 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 456a6e03d8a67fb41865369cd05bf0ac, type: 3}
+--- !u!114 &786659559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxColor:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  hdriSky:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  enableBackplate:
+    m_OverrideState: 0
+    m_Value: 0
+  backplateType:
+    m_OverrideState: 0
+    m_Value: 0
+  groundLevel:
+    m_OverrideState: 0
+    m_Value: 0
+  scale:
+    m_OverrideState: 0
+    m_Value: {x: 32, y: 32}
+  projectionDistance:
+    m_OverrideState: 0
+    m_Value: 16
+    min: 0.0000001
+  plateRotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  plateTexRotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  plateTexOffset:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0}
+  blendAmount:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 100
+  shadowTint:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  pointLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
+  dirLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
+  rectLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!4 &788925485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 478412, guid: 342744980eba53b46a054b72ad33b86b,
@@ -18230,7 +18258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: 54648e32d8a5500478bd899b8b0893f3, type: 2}
   m_StaticLightingSkyUniqueID: 1
-  m_SkySettings: {fileID: 649745489}
+  m_SkySettings: {fileID: 786659559}
   m_SkySettingsFromProfile: {fileID: 5558927217908795692, guid: 54648e32d8a5500478bd899b8b0893f3,
     type: 2}
 --- !u!4 &952676754
@@ -18930,7 +18958,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
-  m_BlendDistance: 1
+  m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -22694,7 +22722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10816574, guid: 042a7398381ca6d41a36a2a4e4fd8239, type: 3}
       propertyPath: m_Intensity
-      value: 3.580986
+      value: 47.746483
       objectReference: {fileID: 0}
     - target: {fileID: 10816574, guid: 042a7398381ca6d41a36a2a4e4fd8239, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -23111,7 +23139,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
-  m_BlendDistance: 1
+  m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -23232,7 +23260,7 @@ MonoBehaviour:
       automaticScale: 1
       viewerScale: 1
     type: 0
-    mode: 1
+    mode: 0
     realtimeMode: 1
     lighting:
       multiplier: 1
@@ -23390,7 +23418,7 @@ MonoBehaviour:
     camera:
       camera: 0
   m_ProxyVolume: {fileID: 0}
-  m_BakedTexture: {fileID: 0}
+  m_BakedTexture: {fileID: 8900000, guid: 6dca9a5410e39124c88f1cb449a74843, type: 3}
   m_CustomTexture: {fileID: 0}
   m_BakedRenderData:
     m_WorldToCameraRHS:
@@ -23692,6 +23720,10 @@ PrefabInstance:
     - target: {fileID: 10816574, guid: 042a7398381ca6d41a36a2a4e4fd8239, type: 3}
       propertyPath: m_Intensity
       value: 47.746483
+      objectReference: {fileID: 0}
+    - target: {fileID: 10816574, guid: 042a7398381ca6d41a36a2a4e4fd8239, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10816574, guid: 042a7398381ca6d41a36a2a4e4fd8239, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -25213,7 +25245,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
-  m_BlendDistance: 1
+  m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -26789,7 +26821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -26972,6 +27008,15 @@ MonoBehaviour:
   - id: 4
     category: 0
     gameObject: {fileID: 1989551893}
+  - id: 5
+    category: 0
+    gameObject: {fileID: 1144213504}
+  - id: 6
+    category: 0
+    gameObject: {fileID: 574017635}
+  - id: 7
+    category: 0
+    gameObject: {fileID: 651584578}
 --- !u!4 &1352925094
 Transform:
   m_ObjectHideFlags: 19
@@ -28587,7 +28632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -30579,7 +30628,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -31861,7 +31914,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -32090,7 +32147,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -35443,7 +35504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -36100,7 +36165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -37724,7 +37793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -38388,7 +38461,7 @@ ReflectionProbe:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IntensityMultiplier: 1
-  m_BlendDistance: 1
+  m_BlendDistance: 0
   m_HDR: 1
   m_BoxProjection: 0
   m_RenderDynamicObjects: 0
@@ -39258,15 +39331,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 3.9788735
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_LightShadowCasterMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3156579736629033961, guid: 9353458cd3e68e14caa21246ea6dcac1,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3156579736629033961, guid: 9353458cd3e68e14caa21246ea6dcac1,
+        type: 3}
+      propertyPath: m_LightUnit
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
