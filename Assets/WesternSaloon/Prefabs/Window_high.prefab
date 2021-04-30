@@ -12,9 +12,6 @@ GameObject:
   - component: {fileID: 3303312}
   - component: {fileID: 2321256}
   - component: {fileID: 6486374}
-  - component: {fileID: 11178194}
-  - component: {fileID: 6536718}
-  - component: {fileID: 11460708}
   m_Layer: 0
   m_Name: Leaf
   m_TagString: Wood
@@ -99,76 +96,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 116aebb1fd8d0a74fa95377544a9e536, type: 3}
---- !u!111 &11178194
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103806}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: bb314e1424a02f64cb0319b7c730bcc0, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: bb314e1424a02f64cb0319b7c730bcc0, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!65 &6536718
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103806}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1757252, y: 2.9149427, z: 1.0253367}
-  m_Center: {x: -0.00000008441157, y: -0.38780174, z: -0.58380884}
---- !u!114 &11460708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee624c57cd2e3549a0bd171add6907b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerHeadTag: MainCamera
-  knob: {fileID: 461176}
-  controls:
-    openingSpeed: 1
-    closingSpeed: 1
-    closeStartFrom: 0.6
-    openMethod: 0
-    openButton: 101
-    autoClose: 0
-  AnimationNames:
-    OpeningAnim: WindowHigh_open
-    LockedAnim: Door_locked
-  doorSounds:
-    enabled: 1
-    open: {fileID: 8300000, guid: db805d25eb6828d4bb7bb83ec8da5b67, type: 3}
-    close: {fileID: 8300000, guid: 907d3b346f728354ab0323e116fa8834, type: 3}
-    closed: {fileID: 0}
-    volume: 1
-    pitchRandom: 0.2
-  doorTexts:
-    enabled: 1
-    openingText: Press [BUTTON] to open
-    closingText: Press [BUTTON] to close
-    lockText: You need a key!
-    TextPrefab: {fileID: 176666, guid: 9f1076dfacb363a4e88cf3ee2efd83ad, type: 3}
-  keySystem:
-    enabled: 0
-    isUnlock: 0
-    LockPrefab: {fileID: 0}
 --- !u!1 &144526
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +340,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185562}
-  m_LocalRotation: {x: 3.5527137e-15, y: -0.70710677, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.966, y: 2.28, z: 0.4219999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -421,7 +348,7 @@ Transform:
   - {fileID: 432950}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!33 &3330614
 MeshFilter:
   m_ObjectHideFlags: 0
