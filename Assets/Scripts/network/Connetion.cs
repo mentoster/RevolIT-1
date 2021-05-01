@@ -6,76 +6,41 @@ using Photon.Realtime;
 
 public class Connetion : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private string appVer = "0.1";
-    [SerializeField] private byte maxPlayers = 4;
-    private bool inSerchOfMatch = false;
+    [SerializeField] string appVer = "0.1";
+    [SerializeField] byte maxPlayers = 4;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject SceneCamera;
+    [SerializeField] Transform[] LobbySpawnPoints;
 
-
-    public static bool gameStart { get; private set; }
-
-    private void Awake()
-    {
-        gameStart = false;
-    }
-
-    private void Start()
+    void Start()
     {
         PhotonNetwork.GameVersion = appVer;
         PhotonNetwork.ConnectUsingSettings();
     }
 
-    public void EndOfMatch(bool isWin)
-    {
-        PhotonNetwork.LeaveRoom();
-    }
-
-    private void CheckGameStatus()
-    {
-        if (maxPlayers == PhotonNetwork.CurrentRoom.PlayerCount)
-        {
-            gameStart = true;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
-        }
-    }
-
-    #region Btns actions
-    public void SearchMatch()
-    {
-        if (inSerchOfMatch)
-        {
-            PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = maxPlayers });
-        }
-        else
-        {
-            inSerchOfMatch = true;
-            PhotonNetwork.JoinRandomRoom();
-        }
-    }
-    #endregion
-
-    #region Fails
-    public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        Debug.LogWarning("No rooms avalible. A new room will be created.");
-        SearchMatch();
-    }
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
-        Debug.LogError("Failed to create room");
-        inSerchOfMatch = false;
-    }
-    #endregion
-
-    #region Callbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected");
+        RoomOptions opt = new RoomOptions();
+        opt.MaxPlayers = maxPlayers;
+        PhotonNetwork.JoinRandomRoom();
+    }
+
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        Debug.Log("There is no rooms, creating...");
+        PhotonNetwork.CreateRoom(null, new RoomOptions {MaxPlayers = maxPlayers});
     }
 
     public override void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom.");
-        CheckGameStatus();
+        int players = PhotonNetwork.CurrentRoom.PlayerCount;
+        GameObject localplayer = PhotonNetwork.Instantiate(player.name, LobbySpawnPoints[players - 1].position, LobbySpawnPoints[players - 1].rotation);
+        localplayer.GetComponent<MeshRenderer>().enabled = false;
+        localplayer.GetComponent<Camera>().enabled = true;
+        localplayer.GetComponent<FlyCamera>().enabled = true;
+        SceneCamera.SetActive(false);
     }
 
     public override void OnCreatedRoom()
@@ -85,12 +50,20 @@ public class Connetion : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        CheckGameStatus();
+        Debug.Log("Payer Connected");
+        if (PhotonNetwork.CurrentRoom.PlayerCount == maxPlayers)
+        {
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+        }
     }
 
     public override void OnLeftRoom()
     {
-        
+        base.OnLeftRoom();
     }
-    #endregion
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        Debug.Log("Disconnected");
+    }
 }
