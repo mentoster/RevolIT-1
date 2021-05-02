@@ -20,8 +20,10 @@ public class PistolHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            PhotonView PV = GameObject.Find("SceneController").GetComponent<PhotonView>();
-            PV.RPC("ready", RpcTarget.AllBuffered, pistol_index);
+            if (owner == "player")
+            {
+                take();
+            }
         }
     }
 
@@ -29,19 +31,12 @@ public class PistolHandler : MonoBehaviour
     {
         owner = player;
         pistol_index = index;
+        Debug.Log(index);
     }
 
     public void take()
     {
-        PV.RPC("tale_pistol", RpcTarget.AllBuffered, owner);
-    }
-
-    [PunRPC]
-    public void take_pistol(string player)
-    {
-        if (owner == player)
-        {
-            ready = true;
-        }
+        PhotonView scene_PV =  GameObject.Find("SceneController").GetComponent<PhotonView>();
+        scene_PV.RPC("ready", RpcTarget.AllBuffered, pistol_index);
     }
 }

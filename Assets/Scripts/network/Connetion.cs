@@ -43,6 +43,7 @@ public class Connetion : MonoBehaviourPunCallbacks
         GameObject localpistol = PhotonNetwork.Instantiate(pistol.name, PistolSpawnPoints[players - 1].position, PistolSpawnPoints[players - 1].rotation);
         localpistol.GetComponent<PistolHandler>().spawn("player", players - 1);
         localplayer.GetComponent<MeshRenderer>().enabled = false;
+        localplayer.GetComponent<AudioListener>().enabled = false;
         localplayer.GetComponent<Camera>().enabled = true;
         localplayer.GetComponent<FlyCamera>().enabled = true;
         SceneCamera.SetActive(false);
@@ -53,7 +54,7 @@ public class Connetion : MonoBehaviourPunCallbacks
         Debug.Log("OnCreatedRoom.");
     }
 
-    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log("Payer Connected");
         if (PhotonNetwork.CurrentRoom.PlayerCount == maxPlayers)

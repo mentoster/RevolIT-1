@@ -26,7 +26,7 @@ public class SceneController : MonoBehaviour
         }
         if (counter == ready_players.Length - 1)
         {
-            Debug.Log("spawn");
+            //Debug.Log("spawn");
         }
     }
 
@@ -34,5 +34,6 @@ public class SceneController : MonoBehaviour
     public void ready(int index)
     {
         ready_players[index] = true;
+        Debug.Log(index);
     }
 }
