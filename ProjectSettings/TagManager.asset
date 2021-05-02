@@ -8,6 +8,7 @@ TagManager:
   - Wood
   - Metal
   - Glass
+  - Pistol
   layers:
   - Default
   - TransparentFX

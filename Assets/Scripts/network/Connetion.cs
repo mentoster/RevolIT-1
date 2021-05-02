@@ -9,8 +9,11 @@ public class Connetion : MonoBehaviourPunCallbacks
     [SerializeField] string appVer = "0.1";
     [SerializeField] byte maxPlayers = 4;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject pistol;
     [SerializeField] GameObject SceneCamera;
     [SerializeField] Transform[] LobbySpawnPoints;
+    [SerializeField] Transform[] PistolSpawnPoints;
+    [SerializeField] Transform[] ShootingSpawnPoints;
 
     void Start()
     {
@@ -37,6 +40,8 @@ public class Connetion : MonoBehaviourPunCallbacks
         Debug.Log("OnJoinedRoom.");
         int players = PhotonNetwork.CurrentRoom.PlayerCount;
         GameObject localplayer = PhotonNetwork.Instantiate(player.name, LobbySpawnPoints[players - 1].position, LobbySpawnPoints[players - 1].rotation);
+        GameObject localpistol = PhotonNetwork.Instantiate(pistol.name, PistolSpawnPoints[players - 1].position, PistolSpawnPoints[players - 1].rotation);
+        localpistol.GetComponent<PistolHandler>().spawn("player", players - 1);
         localplayer.GetComponent<MeshRenderer>().enabled = false;
         localplayer.GetComponent<Camera>().enabled = true;
         localplayer.GetComponent<FlyCamera>().enabled = true;
@@ -64,6 +69,6 @@ public class Connetion : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log("Disconnected");
+        Debug.Log(cause);
     }
 }
