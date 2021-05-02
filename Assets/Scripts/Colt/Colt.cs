@@ -6,8 +6,9 @@ using UnityEngine;
 public class Colt : MonoBehaviour
 {
     [SerializeField] byte _bullets = 6;
+    byte _maxBullets;
     [SerializeField] Transform _shootPoint;
-    float _damage = 30;
+    readonly float _damage = 30;
     bool _canShoot = true;
     AudioSource _audioSource;
     [Header("Sounds")]
@@ -22,7 +23,10 @@ public class Colt : MonoBehaviour
 
     private void Start()
     {
+        _maxBullets = _bullets;
         _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+            Debug.LogError("No audiosource!");
         if (_effectsName.Count == _effect.Count)
             for (int i = 0; i < _effectsName.Count; ++i)
                 _effects.Add(_effectsName[i], _effect[i]);
@@ -53,23 +57,27 @@ public class Colt : MonoBehaviour
                 else if (_effects.ContainsKey(hit.transform.tag))
                     Instantiate(_effects[hit.transform.tag], hit.point, Quaternion.LookRotation(hit.normal));
             }
-            // _audioSource.PlayOneShot(_shootSound);
+            _audioSource.PlayOneShot(_shootSound);
             --_bullets;
         }
         else
         {
-            // _audioSource.PlayOneShot(_emptySound);
+            _audioSource.PlayOneShot(_emptySound);
         }
     }
     #endregion
     #region reload
     public void Reload()
     {
-        // start ReloadAnimation
-        //
-        // _audioSource.PlayOneShot(_reloadSound);
-        _canShoot = false;
-        StartCoroutine(ReloadTimer());
+        if (_bullets != _maxBullets)
+        {
+            // start ReloadAnimation
+            //
+            _audioSource.PlayOneShot(_reloadSound);
+            _canShoot = false;
+            _bullets = _maxBullets;
+            StartCoroutine(ReloadTimer());
+        }
     }
     IEnumerator ReloadTimer()
     {
