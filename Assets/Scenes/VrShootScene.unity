@@ -1313,6 +1313,13 @@ MonoBehaviour:
   _shootSound: {fileID: 8300000, guid: 38918687893f74d41932133308b1d2ff, type: 3}
   _reloadSound: {fileID: 8300000, guid: fd578ffb1cd8a554c92315163f8b3529, type: 3}
   _emptySound: {fileID: 8300000, guid: 4baf81ed33d3d8b4895b21a516cfd022, type: 3}
+  _effectsName:
+  - 
+  - 
+  - 
+  - 
+  - 
+  _effect: []
 --- !u!23 &1711813855142057305
 MeshRenderer:
   m_ObjectHideFlags: 0
