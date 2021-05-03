@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 421070042994428734}
-  fly: {fileID: 421070042994428728}
+  playerControl: {fileID: 421070042994428728}
   AL: {fileID: 421070042994428735}
   playerRenderers:
   - {fileID: 7615217206315464752}

@@ -15,10 +15,29 @@ public class Connetion : MonoBehaviourPunCallbacks
     [SerializeField] Transform[] PistolSpawnPoints;
     [SerializeField] Transform[] ShootingSpawnPoints;
     [SerializeField] SceneController sceneController;
+    Settings settings;
+    [SerializeField] string AppId = "";
+
 
     void Start()
     {
         PhotonNetwork.GameVersion = appVer;
+        settings = new Settings("", 0);
+        if (settings.serverAddress != "" && settings.serverPort != 0)
+        {
+            Debug.Log("Connect to local server");
+            PhotonNetwork.PhotonServerSettings.AppSettings.UseNameServer = false;
+            PhotonNetwork.PhotonServerSettings.AppSettings.Server = settings.serverAddress;
+            PhotonNetwork.PhotonServerSettings.AppSettings.Port = settings.serverPort;
+        }
+        else
+        {
+            Debug.Log("Connect to remote server");
+            PhotonNetwork.PhotonServerSettings.AppSettings.UseNameServer = true;
+            PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = AppId;
+            PhotonNetwork.PhotonServerSettings.AppSettings.Server = "";
+            PhotonNetwork.PhotonServerSettings.AppSettings.Port = 0;
+        }
         PhotonNetwork.ConnectUsingSettings();
     }
 
