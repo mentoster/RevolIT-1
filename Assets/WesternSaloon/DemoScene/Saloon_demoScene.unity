@@ -1540,6 +1540,7 @@ MonoBehaviour:
   - {fileID: 887812738}
   - {fileID: 1973162978}
   - {fileID: 200647393}
+  sceneController: {fileID: 96938424}
 --- !u!4 &96938422
 Transform:
   m_ObjectHideFlags: 0
@@ -1589,6 +1590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d387b533bcb2e4c8e59df9a79926dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localPlayer: {fileID: 0}
   ready_players: 00000000
 --- !u!1001 &98044241
 PrefabInstance:
@@ -3416,7 +3418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 2.387324
+      value: 47.746483
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_AreaSize.x
@@ -12631,7 +12633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 2.387324
+      value: 47.746483
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_AreaSize.x
@@ -22217,7 +22219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10816574, guid: 042a7398381ca6d41a36a2a4e4fd8239, type: 3}
       propertyPath: m_Intensity
-      value: 3.580986
+      value: 47.746483
       objectReference: {fileID: 0}
     - target: {fileID: 10816574, guid: 042a7398381ca6d41a36a2a4e4fd8239, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -27645,7 +27647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 2.387324
+      value: 47.746483
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_AreaSize.x
@@ -29906,7 +29908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_AreaSize.x
@@ -31526,7 +31528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 2.387324
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Lightmapping
@@ -38192,7 +38194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 3.9788735
       objectReference: {fileID: 0}
     - target: {fileID: 10877248, guid: 9353458cd3e68e14caa21246ea6dcac1, type: 3}
       propertyPath: m_Lightmapping

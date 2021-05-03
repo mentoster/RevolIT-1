@@ -14,6 +14,7 @@ public class Connetion : MonoBehaviourPunCallbacks
     [SerializeField] Transform[] LobbySpawnPoints;
     [SerializeField] Transform[] PistolSpawnPoints;
     [SerializeField] Transform[] ShootingSpawnPoints;
+    [SerializeField] SceneController sceneController;
 
     void Start()
     {
@@ -41,11 +42,9 @@ public class Connetion : MonoBehaviourPunCallbacks
         int players = PhotonNetwork.CurrentRoom.PlayerCount;
         GameObject localplayer = PhotonNetwork.Instantiate(player.name, LobbySpawnPoints[players - 1].position, LobbySpawnPoints[players - 1].rotation);
         GameObject localpistol = PhotonNetwork.Instantiate(pistol.name, PistolSpawnPoints[players - 1].position, PistolSpawnPoints[players - 1].rotation);
+        sceneController.localPlayer = localplayer;
+        localplayer.GetComponent<playerHandler>().MakeLocal(ShootingSpawnPoints[players - 1]);
         localpistol.GetComponent<PistolHandler>().spawn("player", players - 1);
-        localplayer.GetComponent<MeshRenderer>().enabled = false;
-        localplayer.GetComponent<AudioListener>().enabled = false;
-        localplayer.GetComponent<Camera>().enabled = true;
-        localplayer.GetComponent<FlyCamera>().enabled = true;
         SceneCamera.SetActive(false);
     }
 

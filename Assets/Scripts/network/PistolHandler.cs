@@ -3,27 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+[RequireComponent(typeof(PhotonView))]
+[RequireComponent(typeof(PhotonTransformView))]
 public class PistolHandler : MonoBehaviour
 {
-    public string owner;
+    string owner;
     int pistol_index;
-    public bool ready = false;
-    [SerializeField]PhotonView PV;
-
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            if (owner == "player")
-            {
-                take();
-            }
+            take();
         }
     }
 
@@ -36,7 +27,10 @@ public class PistolHandler : MonoBehaviour
 
     public void take()
     {
-        PhotonView scene_PV =  GameObject.Find("SceneController").GetComponent<PhotonView>();
-        scene_PV.RPC("ready", RpcTarget.AllBuffered, pistol_index);
+        if (owner == "player")
+        {
+            PhotonView scene_PV = GameObject.Find("SceneController").GetComponent<PhotonView>();
+            scene_PV.RPC("ready", RpcTarget.AllBuffered, pistol_index);
+        }
     }
 }

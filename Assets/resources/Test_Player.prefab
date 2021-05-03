@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 421070042994428735}
   - component: {fileID: 421070042994428732}
   - component: {fileID: 421070042994428728}
+  - component: {fileID: 8544874402930101391}
   - component: {fileID: 421070042994428730}
   - component: {fileID: 421070042994428731}
   - component: {fileID: 6474470574854598455}
@@ -88,7 +89,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421070042994428733}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &421070042994428732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +206,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b669d22c4799d4293d990f603a571d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8544874402930101391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421070042994428733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf975d2ebf3f8c498bbc15c2243026a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 421070042994428734}
+  fly: {fileID: 421070042994428728}
+  AL: {fileID: 421070042994428735}
+  playerRenderers:
+  - {fileID: 7615217206315464752}
 --- !u!114 &421070042994428730
 MonoBehaviour:
   m_ObjectHideFlags: 0

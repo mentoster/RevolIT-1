@@ -5,7 +5,9 @@ using Photon.Pun;
 
 public class SceneController : MonoBehaviour
 {
+    public GameObject localPlayer;
     public bool[] ready_players;
+    bool waiting = true;
 
     // Start is called before the first frame update
     void Start()
@@ -16,17 +18,24 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int counter = 0;
-        for (int i = 0; i < ready_players.Length - 1; i++)
+        if (waiting)
         {
-            if (ready_players[i] == true)
+            int counter = 0;
+            for (int i = 0; i < ready_players.Length - 1; i++)
             {
-                counter += 1;
+                if (ready_players[i] == true)
+                {
+                    counter += 1;
+                }
             }
-        }
-        if (counter == ready_players.Length - 1)
-        {
-            //Debug.Log("spawn");
+            if (PhotonNetwork.IsConnectedAndReady)
+            {
+                if (counter == PhotonNetwork.CurrentRoom.PlayerCount)
+                {
+                    waiting = false;
+                    localPlayer.GetComponent<playerHandler>().StartGame();
+                }
+            }
         }
     }
 
