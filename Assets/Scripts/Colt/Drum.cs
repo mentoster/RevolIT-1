@@ -8,22 +8,25 @@ public class Drum : MonoBehaviour
     [SerializeField] GameObject _bullet;
     GameObject[] _bullets = new GameObject[6];
     [SerializeField] GameObject _ejectCollision;
+    [SerializeField] float  _animPos=0.015f;
+    [SerializeField] Transform[] _bulletsPositions;
     [Header("Sounds")]
     [SerializeField] AudioClip _openSound;
     [SerializeField] AudioClip _rotateSound;
     [SerializeField] AudioClip _closeSound;
-    [SerializeField] Transform[] _bulletsPositions;
     Rigidbody m_Rigidbody;
     [SerializeField]
     float _maxRotationVelocity = 3;
     float _rotationVelocity;
 
     bool _IsOpen = false;
+    Transform _parentTransfrorm;
 
 
     AudioSource _audioSource;
     private void Start()
     {
+        _parentTransfrorm = transform.parent.transform;
         _audioSource = gameObject.GetComponent<AudioSource>();
         m_Rigidbody = gameObject.GetComponent<Rigidbody>();
         GenerateBullets();
@@ -44,7 +47,7 @@ public class Drum : MonoBehaviour
         _IsOpen = true;
         _rotationVelocity = _maxRotationVelocity;
         // animations to open
-        transform.parent.transform.position = new Vector3(transform.position.x, transform.position.y - 0.005f, transform.position.z);
+        _parentTransfrorm.localPosition = new Vector3(_parentTransfrorm.localPosition.x, _parentTransfrorm.localPosition.y - _animPos, _parentTransfrorm.localPosition.z);
     }
 
     public void Close()
@@ -53,7 +56,7 @@ public class Drum : MonoBehaviour
         _IsOpen = false;
         _ejectCollision.SetActive(false);
         // animations to close
-        transform.parent.transform.position = new Vector3(transform.position.x, transform.position.y + 0.005f, transform.position.z);
+        _parentTransfrorm.localPosition = new Vector3(_parentTransfrorm.localPosition.x, _parentTransfrorm.localPosition.y + _animPos, _parentTransfrorm.localPosition.z);
         GenerateBullets();
     }
     void GenerateBullets()
