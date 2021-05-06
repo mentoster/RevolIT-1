@@ -85,17 +85,17 @@ public class Colt : MonoBehaviour
         {
             // start ReloadAnimation
             //
-
+            _drum.Open();
             _canShoot = false;
             _bullets = _maxBullets;
-            StartCoroutine(ReloadTimer());
+            StartCoroutine(EndReloadTimer());
         }
     }
-    IEnumerator ReloadTimer()
+    IEnumerator EndReloadTimer()
     {
         yield return new WaitForSeconds(_reloadTime);
         _canShoot = true;
-
+        _drum.Close();
     }
     #endregion
 
