@@ -16,7 +16,8 @@ public class Colt : MonoBehaviour
     AudioSource _audioSource;
     [Header("Sounds")]
     [SerializeField] float _reloadTime;
-    [SerializeField] AudioClip _shootSound;
+    [SerializeField] AudioClip[] _shootSounds;
+    AudioClip _shootSound;
 
     [SerializeField] AudioClip _emptySound;
     [Header("Effects")]
@@ -28,6 +29,7 @@ public class Colt : MonoBehaviour
     {
         _maxBullets = _bullets;
         _audioSource = GetComponent<AudioSource>();
+        _shootSound = _shootSounds[Random.Range(0, _shootSounds.Length)];
         if (_audioSource == null)
             Debug.LogError("No audiosource!");
         if (_effectsName.Count == _effect.Count)

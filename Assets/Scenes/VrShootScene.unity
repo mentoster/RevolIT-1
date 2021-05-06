@@ -782,7 +782,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -20178,6 +20178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pushPower: 0.1
+  _deleteTimer: 6
 --- !u!65 &1231210800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20189,8 +20190,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.015184909, y: 0.0046433215, z: 0.027516121}
-  m_Center: {x: 2.0347458e-10, y: -1.1320563e-17, z: 0.01317936}
+  m_Size: {x: 0.015184909, y: 0.0038343675, z: 0.027516121}
+  m_Center: {x: 2.0347465e-10, y: -0.0004828294, z: 0.01317936}
 --- !u!1 &2016871096
 GameObject:
   m_ObjectHideFlags: 0
@@ -25193,7 +25194,9 @@ MonoBehaviour:
   _shootEffect: {fileID: 670735014}
   _drum: {fileID: 2095210193271461900}
   _reloadTime: 3
-  _shootSound: {fileID: 8300000, guid: 38918687893f74d41932133308b1d2ff, type: 3}
+  _shootSounds:
+  - {fileID: 8300000, guid: 983125b0780cc624e8e87c862befd60e, type: 3}
+  - {fileID: 8300000, guid: 38918687893f74d41932133308b1d2ff, type: 3}
   _emptySound: {fileID: 8300000, guid: 4baf81ed33d3d8b4895b21a516cfd022, type: 3}
   _effectsName: []
   _effect: []
@@ -25574,6 +25577,7 @@ MonoBehaviour:
   _bullet: {fileID: 7649119369683175344, guid: 1d60f2a8d2a067841822559096a76e60, type: 3}
   _ejectCollision: {fileID: 1811082963229973949}
   _openSound: {fileID: 8300000, guid: bb6139231e6f2ef4f94dc7bbd1b7daf2, type: 3}
+  _rotateSound: {fileID: 8300000, guid: b1d38454fbf142d4b942c71ed220aa8a, type: 3}
   _closeSound: {fileID: 8300000, guid: b80e38c89cea5524ba2c08c3be8562b0, type: 3}
   _bulletsPositions:
   - {fileID: 1811082964475503843}
@@ -25582,6 +25586,7 @@ MonoBehaviour:
   - {fileID: 1811082964941427927}
   - {fileID: 1811082963459479692}
   - {fileID: 1811082965085397273}
+  _maxRotationVelocity: 10
 --- !u!54 &2095210193271461902
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25700,7 +25705,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!1 &7619714047024737792
 GameObject:
   m_ObjectHideFlags: 0
@@ -25825,7 +25830,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7619714047024737792}
-  m_LocalRotation: {x: 0.00000005960465, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0048342943, y: -0.27099994, z: 0.024300069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

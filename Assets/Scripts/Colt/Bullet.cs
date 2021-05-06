@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,5 +12,14 @@ public class Bullet : MonoBehaviour
     {
         _audioSource = gameObject.GetComponent<AudioSource>();
     }
-    
+    public void DeleteTimer(float time)
+    {
+        Destroy(gameObject,time);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        _audioSource.PlayOneShot(groundSound);
+
+    }
+
 }

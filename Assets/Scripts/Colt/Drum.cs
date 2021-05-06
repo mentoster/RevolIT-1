@@ -10,10 +10,14 @@ public class Drum : MonoBehaviour
     [SerializeField] GameObject _ejectCollision;
     [Header("Sounds")]
     [SerializeField] AudioClip _openSound;
+    [SerializeField] AudioClip _rotateSound;
     [SerializeField] AudioClip _closeSound;
     [SerializeField] Transform[] _bulletsPositions;
     Rigidbody m_Rigidbody;
-    float _rotationVelocity = 3;
+    [SerializeField]
+    float _maxRotationVelocity = 3;
+    float _rotationVelocity;
+
     bool _IsOpen = false;
 
 
@@ -21,33 +25,35 @@ public class Drum : MonoBehaviour
     private void Start()
     {
         _audioSource = gameObject.GetComponent<AudioSource>();
+        m_Rigidbody = gameObject.GetComponent<Rigidbody>();
         GenerateBullets();
     }
     private void FixedUpdate()
     {
         if (_IsOpen)
         {
-            _rotationVelocity -= 0.05f;
-            Quaternion deltaRotation = Quaternion.Euler(new Vector3(_rotationVelocity, 0, 0) * Time.fixedDeltaTime);
-            m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
+            _rotationVelocity -= _maxRotationVelocity / 200;
+            transform.Rotate(_rotationVelocity, 0, 0);
         }
     }
     public void Open()
     {
         _ejectCollision.SetActive(true);
         _audioSource.PlayOneShot(_openSound);
+        _audioSource.PlayOneShot(_rotateSound);
         _IsOpen = true;
-        _rotationVelocity = 1000;
+        _rotationVelocity = _maxRotationVelocity;
         // animations to open
-        transform.parent.transform.position = new Vector3(transform.position.x, transform.position.y - 0.02f, transform.position.z);
+        transform.parent.transform.position = new Vector3(transform.position.x, transform.position.y - 0.005f, transform.position.z);
     }
+
     public void Close()
     {
         _audioSource.PlayOneShot(_closeSound);
         _IsOpen = false;
         _ejectCollision.SetActive(false);
         // animations to close
-        transform.parent.transform.position = new Vector3(transform.position.x, transform.position.y + 0.02f, transform.position.z);
+        transform.parent.transform.position = new Vector3(transform.position.x, transform.position.y + 0.005f, transform.position.z);
         GenerateBullets();
     }
     void GenerateBullets()
@@ -55,7 +61,7 @@ public class Drum : MonoBehaviour
         for (var i = 0; i < _bulletsPositions.Length; i++)
         {
             _bullets[i] = Instantiate(_bullet, _bulletsPositions[i].position, _bulletsPositions[i].rotation);
-            _bullets[i].transform.parent = gameObject.transform;
+            _bullets[i].transform.parent = _bulletsPositions[i];
         }
 
     }
