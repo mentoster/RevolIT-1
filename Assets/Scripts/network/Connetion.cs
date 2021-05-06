@@ -62,7 +62,7 @@ public class Connetion : MonoBehaviourPunCallbacks
         GameObject localplayer = PhotonNetwork.Instantiate(player.name, LobbySpawnPoints[players - 1].position, LobbySpawnPoints[players - 1].rotation);
         GameObject localpistol = PhotonNetwork.Instantiate(pistol.name, PistolSpawnPoints[players - 1].position, PistolSpawnPoints[players - 1].rotation);
         sceneController.localPlayer = localplayer;
-        localplayer.GetComponent<playerHandler>().MakeLocal(ShootingSpawnPoints[players - 1]);
+        localplayer.GetComponent<playerHandler>().MakeLocal(ShootingSpawnPoints[players - 1], players - 1);
         localpistol.GetComponent<PistolHandler>().spawn("player", players - 1);
         SceneCamera.SetActive(false);
     }

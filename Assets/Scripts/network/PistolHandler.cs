@@ -12,9 +12,17 @@ public class PistolHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L)) // just for test
         {
             take();
+        }
+        if (Input.GetKeyDown(KeyCode.K)) // just for test
+        {
+            if (owner == "player")
+            {
+                PhotonView scene_PV = GameObject.Find("SceneController").GetComponent<PhotonView>();
+                scene_PV.RPC("dead", RpcTarget.AllBuffered, pistol_index);
+            }
         }
     }
 
