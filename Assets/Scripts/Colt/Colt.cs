@@ -9,15 +9,15 @@ public class Colt : MonoBehaviour
     [SerializeField] Transform _shootPoint;
     [SerializeField] float _fireRate = 0.3f;
     [SerializeField] GameObject _shootEffect;
-    [SerializeField] GameObject bullet;
+    [SerializeField] Drum _drum;
+
     readonly float _damage = 30;
     bool _canShoot = true;
     AudioSource _audioSource;
     [Header("Sounds")]
     [SerializeField] float _reloadTime;
     [SerializeField] AudioClip _shootSound;
-    [SerializeField] AudioClip _openReloadSound;
-    [SerializeField] AudioClip _closeReloadSound;
+
     [SerializeField] AudioClip _emptySound;
     [Header("Effects")]
     Dictionary<string, GameObject> _effects;
@@ -85,7 +85,7 @@ public class Colt : MonoBehaviour
         {
             // start ReloadAnimation
             //
-            _audioSource.PlayOneShot(_openReloadSound);
+
             _canShoot = false;
             _bullets = _maxBullets;
             StartCoroutine(ReloadTimer());
@@ -95,14 +95,7 @@ public class Colt : MonoBehaviour
     {
         yield return new WaitForSeconds(_reloadTime);
         _canShoot = true;
-        _audioSource.PlayOneShot(_closeReloadSound);
-        for (int i = 0; i < _maxBullets; ++i)
-        {
-            float r = 5f;
-            float angle = Mathf.PI * 2 / i;
-            Vector2 pos2d = new Vector2(Mathf.Sin(angle) * r, Mathf.Cos(angle) * r);
-            Instantiate(bullet, new Vector3(pos2d.x, pos2d.y, 0), transform.rotation);
-        }
+
     }
     #endregion
 
