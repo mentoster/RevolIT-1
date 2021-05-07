@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bhaptics.Tact.Unity;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Colt : MonoBehaviour
 {
@@ -13,9 +15,9 @@ public class Colt : MonoBehaviour
 
     readonly float _damage = 30;
     bool _canShoot = true;
+    [SerializeField] float _reloadTime;
     AudioSource _audioSource;
     [Header("Sounds")]
-    [SerializeField] float _reloadTime;
     [SerializeField] AudioClip[] _shootSounds;
     AudioClip _shootSound;
 
@@ -25,11 +27,16 @@ public class Colt : MonoBehaviour
     [SerializeField] List<string> _effectsName;
     [SerializeField] List<GameObject> _effect;
 
+    // bhaptic
+    BhapticConnect _bhapticConnect;
+
     private void Start()
     {
         _maxBullets = _bullets;
         _audioSource = GetComponent<AudioSource>();
         _shootSound = _shootSounds[Random.Range(0, _shootSounds.Length)];
+        _bhapticConnect = GetComponent<BhapticConnect>();
+        _bhapticConnect.shootingPoint = _shootPoint;
         if (_audioSource == null)
             Debug.LogError("No audiosource!");
         if (_effectsName.Count == _effect.Count)
@@ -42,37 +49,44 @@ public class Colt : MonoBehaviour
     {
         if (!_canShoot)
             return;
-        if (Input.GetKeyDown(KeyCode.Space))
-            Shoot();
-        else if (Input.GetKeyDown(KeyCode.R))
-            Reload();
+        Shoot();
+        Reload();
     }
     #region shoot
     public void Shoot()
     {
-        if (_bullets > 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            --_bullets;
-            _audioSource.PlayOneShot(_shootSound);
-            _shootEffect.SetActive(false);
-            _shootEffect.SetActive(true);
-            // animations from shoot
-            RaycastHit hit;
-            Debug.DrawRay(_shootPoint.position, _shootPoint.forward, Color.red, 1);
-            if (Physics.Raycast(_shootPoint.position, _shootPoint.forward, out hit))
+            if (_bullets > 0)
             {
-                if (hit.transform.tag == "Player")
-                    hit.transform.GetComponent<Target>().TakeDamage(_damage);
-                else if (_effects.ContainsKey(hit.transform.tag))
-                    Instantiate(_effects[hit.transform.tag], hit.point, Quaternion.LookRotation(hit.normal));
+                --_bullets;
+                _audioSource.PlayOneShot(_shootSound);
+
+                // particle effects
+                _shootEffect.SetActive(false);
+                _shootEffect.SetActive(true);
+
+                Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
+                if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
+                {
+                    if (raycastHit.transform.tag == "Player")
+                    {
+                        // raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
+                        _bhapticConnect.Play(raycastHit: raycastHit);
+                    }
+                    else if (_effects.ContainsKey(raycastHit.transform.tag))
+                        Instantiate(_effects[raycastHit.transform.tag], raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+                }
+
+                StartCoroutine(FireRateTimer());
+                _canShoot = false;
             }
-            _canShoot = false;
-            StartCoroutine(FireRateTimer());
+            else
+            {
+                _audioSource.PlayOneShot(_emptySound);
+            }
         }
-        else
-        {
-            _audioSource.PlayOneShot(_emptySound);
-        }
+
     }
     IEnumerator FireRateTimer()
     {
@@ -83,7 +97,7 @@ public class Colt : MonoBehaviour
     #region reload
     public void Reload()
     {
-        if (_bullets != _maxBullets)
+        if (Input.GetKeyDown(KeyCode.R) && _bullets != _maxBullets)
         {
             // start ReloadAnimation
             //
