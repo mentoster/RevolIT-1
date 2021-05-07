@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Bhaptics.Tact.Unity;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 public class Colt : MonoBehaviour
 {
     [SerializeField] byte _bullets = 6;
@@ -29,6 +30,9 @@ public class Colt : MonoBehaviour
 
     // bhaptic
     BhapticConnect _bhapticConnect;
+    [Header("Vr settings")]
+    [SerializeField] SteamVR_Action_Boolean fireAction;
+    Interactable _interactable;
 
     private void Start()
     {
@@ -37,6 +41,7 @@ public class Colt : MonoBehaviour
         _shootSound = _shootSounds[Random.Range(0, _shootSounds.Length)];
         _bhapticConnect = GetComponent<BhapticConnect>();
         _bhapticConnect.shootingPoint = _shootPoint;
+        _interactable = GetComponent<Interactable>();
         if (_audioSource == null)
             Debug.LogError("No audiosource!");
         if (_effectsName.Count == _effect.Count)
@@ -49,43 +54,58 @@ public class Colt : MonoBehaviour
     {
         if (!_canShoot)
             return;
-        Shoot();
-        Reload();
+        if (_interactable.attachedToHand != null)
+        {
+            SteamVR_Input_Sources source = _interactable.attachedToHand.handType;
+            if (fireAction[source].stateDown)
+            {
+                Shoot();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && _bullets != _maxBullets)
+        {
+            Reload();
+        }
     }
     #region shoot
     public void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+
+        if (_bullets > 0)
         {
-            if (_bullets > 0)
+            --_bullets;
+            _audioSource.PlayOneShot(_shootSound);
+
+            // particle effects
+            _shootEffect.SetActive(false);
+            _shootEffect.SetActive(true);
+
+            Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
+            if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
             {
-                --_bullets;
-                _audioSource.PlayOneShot(_shootSound);
-
-                // particle effects
-                _shootEffect.SetActive(false);
-                _shootEffect.SetActive(true);
-
-                Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
-                if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
+                if (raycastHit.transform.tag == "Player")
                 {
-                    if (raycastHit.transform.tag == "Player")
-                    {
-                        // raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
-                        _bhapticConnect.Play(raycastHit: raycastHit);
-                    }
-                    else if (_effects.ContainsKey(raycastHit.transform.tag))
-                        Instantiate(_effects[raycastHit.transform.tag], raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+                    // raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
+                    _bhapticConnect.Play(raycastHit: raycastHit);
                 }
+                // else if (_effects.ContainsKey(raycastHit.transform.tag))
+                // Instantiate(_effects[raycastHit.transform.tag], raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+            }
 
-                StartCoroutine(FireRateTimer());
-                _canShoot = false;
-            }
-            else
-            {
-                _audioSource.PlayOneShot(_emptySound);
-            }
+            StartCoroutine(FireRateTimer());
+            _canShoot = false;
         }
+        else
+        {
+            _audioSource.PlayOneShot(_emptySound);
+        }
+
 
     }
     IEnumerator FireRateTimer()
@@ -97,15 +117,14 @@ public class Colt : MonoBehaviour
     #region reload
     public void Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && _bullets != _maxBullets)
-        {
-            // start ReloadAnimation
-            //
-            _drum.Open();
-            _canShoot = false;
-            _bullets = _maxBullets;
-            StartCoroutine(EndReloadTimer());
-        }
+
+        // start ReloadAnimation
+        //
+        _drum.Open();
+        _canShoot = false;
+        _bullets = _maxBullets;
+        StartCoroutine(EndReloadTimer());
+
     }
     IEnumerator EndReloadTimer()
     {

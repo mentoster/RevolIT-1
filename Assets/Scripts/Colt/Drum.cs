@@ -8,7 +8,7 @@ public class Drum : MonoBehaviour
     [SerializeField] GameObject _bullet;
     GameObject[] _bullets = new GameObject[6];
     [SerializeField] GameObject _ejectCollision;
-    [SerializeField] float  _animPos=0.015f;
+    [SerializeField] float _animPos = 0.015f;
     [SerializeField] Transform[] _bulletsPositions;
     [Header("Sounds")]
     [SerializeField] AudioClip _openSound;
@@ -45,6 +45,8 @@ public class Drum : MonoBehaviour
         _audioSource.PlayOneShot(_openSound);
         _audioSource.PlayOneShot(_rotateSound);
         _IsOpen = true;
+        for (var i = 0; i < _bullets.Length; i++)
+            _bullets[i].GetComponent<Rigidbody>().isKinematic = false;
         _rotationVelocity = _maxRotationVelocity;
         // animations to open
         _parentTransfrorm.localPosition = new Vector3(_parentTransfrorm.localPosition.x, _parentTransfrorm.localPosition.y - _animPos, _parentTransfrorm.localPosition.z);
