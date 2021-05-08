@@ -20,7 +20,7 @@ namespace Assets.Scripts.Colt
         [SerializeField] float _fireRate = 0.3f;
         float _shootAnimationSpeed;
         byte _maxBullets;
-        [SerializeField] byte _bullets = 6;
+        byte _bullets = 6;
         [Range(0, 20)]
 
 
@@ -91,7 +91,8 @@ namespace Assets.Scripts.Colt
                 _shootEffect.SetActive(false);
                 _shootEffect.SetActive(true);
                 // Trigger and drum effect
-                ActivateShootAnimation();
+                ActivateTrigger();
+                _drum.Shoot(_bullets, _fireRate);
                 Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
                 if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
                 {
@@ -117,28 +118,17 @@ namespace Assets.Scripts.Colt
             yield return new WaitForSeconds(_fireRate);
             _canShoot = true;
         }
-        void ActivateShootAnimation()
+        void ActivateTrigger()
         {
             _trigger.DOLocalRotate(new Vector3(0, 25, 0), _shootAnimationSpeed);
-            _drumOTransform.DOLocalRotateQuaternion(RotationForIndex(_bullets), _shootAnimationSpeed);
             StartCoroutine(ReturnTrigger());
         }
-        Quaternion RotationForIndex(int curIndex)
-        {
-            float angle = AngleForIndex(curIndex);
-            return Quaternion.AngleAxis(angle, Vector3.left);
-        }
-        float AngleForIndex(int curIndex)
-        {
-            return 360.0f * ((float)curIndex / (float)_maxBullets);
-        }
+
         IEnumerator ReturnTrigger()
         {
             yield return new WaitForSeconds(_shootAnimationSpeed);
             _trigger.DOLocalRotate(new Vector3(0, 0, 0), _fireRate);
         }
-
-
         #endregion
         #region reload
         public void Reload()

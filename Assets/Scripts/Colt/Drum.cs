@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Drum : MonoBehaviour
@@ -66,5 +67,19 @@ public class Drum : MonoBehaviour
             _bullets[i].transform.parent = _bulletsPositions[i];
         }
 
+    }
+    public void Shoot(byte _bullets, float _shootAnimationSpeed)
+    {
+        print("shoot");
+        this.gameObject.transform.DOLocalRotateQuaternion(RotationForIndex(_bullets), _shootAnimationSpeed);
+    }
+    Quaternion RotationForIndex(int curIndex)
+    {
+        float angle = AngleForIndex(curIndex);
+        return Quaternion.AngleAxis(angle, Vector3.left);
+    }
+    float AngleForIndex(int curIndex)
+    {
+        return 360.0f * ((float)curIndex / (float)6);
     }
 }
