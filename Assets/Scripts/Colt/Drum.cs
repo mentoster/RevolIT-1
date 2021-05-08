@@ -49,7 +49,6 @@ public class Drum : MonoBehaviour
             _bullets[i].GetComponent<Rigidbody>().isKinematic = false;
         _rotationVelocity = _maxRotationVelocity;
         // animations to open
-        _parentTransfrorm.localPosition = new Vector3(_parentTransfrorm.localPosition.x, _parentTransfrorm.localPosition.y - _animPos, _parentTransfrorm.localPosition.z);
     }
 
     public void Close()
@@ -58,7 +57,6 @@ public class Drum : MonoBehaviour
         _IsOpen = false;
         _ejectCollision.SetActive(false);
         // animations to close
-        _parentTransfrorm.localPosition = new Vector3(_parentTransfrorm.localPosition.x, _parentTransfrorm.localPosition.y + _animPos, _parentTransfrorm.localPosition.z);
         GenerateBullets();
     }
     void GenerateBullets()
