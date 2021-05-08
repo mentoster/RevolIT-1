@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Bhaptics.Tact.Unity;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
+
 public class Colt : MonoBehaviour
 {
     [SerializeField] byte _bullets = 6;
@@ -75,8 +75,6 @@ public class Colt : MonoBehaviour
     #region shoot
     public void Shoot()
     {
-
-
         if (_bullets > 0)
         {
             --_bullets;
@@ -105,19 +103,32 @@ public class Colt : MonoBehaviour
         {
             _audioSource.PlayOneShot(_emptySound);
         }
-
-
     }
     IEnumerator FireRateTimer()
     {
         yield return new WaitForSeconds(_fireRate);
         _canShoot = true;
     }
+    void ActivateTrigger()
+    {
+
+    }
+    IEnumerator TweenRotation(Transform trans, Quaternion destRot, float speed, float threshold)
+    {
+        float angleDist = Quaternion.Angle(trans.rotation, destRot);
+
+        while (angleDist > threshold)
+        {
+            trans.rotation = Quaternion.RotateTowards(trans.rotation, destRot, Time.deltaTime * speed);
+            yield return null;
+
+            angleDist = Quaternion.Angle(trans.rotation, destRot);
+        }
+    }
     #endregion
     #region reload
     public void Reload()
     {
-
         // start ReloadAnimation
         //
         _drum.Open();
