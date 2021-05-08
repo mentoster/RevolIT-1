@@ -8,7 +8,6 @@ public class Drum : MonoBehaviour
     [SerializeField] GameObject _bullet;
     GameObject[] _bullets = new GameObject[6];
     [SerializeField] GameObject _ejectCollision;
-    [SerializeField] float _animPos = 0.015f;
     [SerializeField] Transform[] _bulletsPositions;
     [Header("Sounds")]
     [SerializeField] AudioClip _openSound;

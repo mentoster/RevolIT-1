@@ -25143,7 +25143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2892741007178219283}
-  m_LocalRotation: {x: 0.00000005960465, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.00000006156867, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.0046041016, y: 0, z: 0.023189783}
   m_LocalScale: {x: 66.66667, y: 66.66668, z: 66.66668}
   m_Children:
@@ -25164,7 +25164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811082963229973949}
   m_LocalRotation: {x: -0.49999997, y: 0.50000006, z: -0.49999997, w: 0.50000006}
-  m_LocalPosition: {x: -0.022765696, y: -0.015, z: 0.024300069}
+  m_LocalPosition: {x: -0.02277, y: 0.01651, z: 0.02287}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8000001}
   m_Children: []
   m_Father: {fileID: 713738995}
@@ -30673,7 +30673,6 @@ MonoBehaviour:
   _drum: {fileID: 2892741007178219285}
   _fireRate: 0.15
   _bullets: 6
-  _animationSpeed: 1
   _reloadTime: 3
   _shootSounds:
   - {fileID: 8300000, guid: 983125b0780cc624e8e87c862befd60e, type: 3}
@@ -30682,8 +30681,8 @@ MonoBehaviour:
   _shootEffect: {fileID: 670735014}
   _effectsName: []
   _effect: []
-  fireAction:
-    actionPath: /actions/default/in/GrabPinch
+  _fireAction:
+    actionPath: 
     needsReinit: 0
 --- !u!82 &8296172668712196080
 AudioSource:

@@ -6,159 +6,158 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public class Colt : MonoBehaviour
+namespace Assets.Scripts.Colt
 {
-    [Header("GameObjects")]
-    [SerializeField] Transform _shootPoint;
-    [SerializeField] Transform _trigger;
-    [SerializeField] Drum _drum;
-
-    [Header("Gun settings")]
-    [SerializeField] float _fireRate = 0.3f;
-    float _triggerAnimation;
-    byte _maxBullets;
-    [SerializeField] byte _bullets = 6;
-    [Range(0, 20)]
-
-
-    readonly float _damage = 30;
-    bool _canShoot = true;
-    [SerializeField] float _reloadTime;
-    AudioSource _audioSource;
-    [Header("Sounds")]
-    [SerializeField] AudioClip[] _shootSounds;
-    AudioClip _shootSound;
-
-    [SerializeField] AudioClip _emptySound;
-    [Header("Effects")]
-    [SerializeField] GameObject _shootEffect;
-    Dictionary<string, GameObject> _effects;
-    [SerializeField] List<string> _effectsName;
-    [SerializeField] List<GameObject> _effect;
-
-    // bhaptic
-    [Header("Vr settings")]
-    [SerializeField] SteamVR_Action_Boolean _fireAction;
-    Interactable _interactable;
-    BhapticConnect _bhapticConnect;
-
-    private void Start()
+    public class Colt : MonoBehaviour
     {
-        _maxBullets = _bullets;
-        _audioSource = GetComponent<AudioSource>();
-        _shootSound = _shootSounds[Random.Range(0, _shootSounds.Length)];
-        _bhapticConnect = GetComponent<BhapticConnect>();
-        _bhapticConnect.shootingPoint = _shootPoint;
-        _interactable = GetComponent<Interactable>();
-        _triggerAnimation = _fireRate / 2;
-        if (_audioSource == null)
-            Debug.LogError("No audiosource!");
-        if (_effectsName.Count == _effect.Count)
-            for (int i = 0; i < _effectsName.Count; ++i)
-                _effects.Add(_effectsName[i], _effect[i]);
-        else
-            Debug.LogError($"Error, effectsName and effects must be same number! {_effectsName.Count} !={ _effect.Count} ");
-    }
-    private void Update()
-    {
-        if (!_canShoot)
-            return;
-        if (_interactable.attachedToHand != null)
+        [Header("GameObjects")]
+        [SerializeField] Transform _shootPoint;
+        [SerializeField] Transform _trigger;
+        [SerializeField] Drum _drum;
+        Transform _drumOTransform;
+
+        [Header("Gun settings")]
+        [SerializeField] float _fireRate = 0.3f;
+        float _shootAnimationSpeed;
+        byte _maxBullets;
+        [SerializeField] byte _bullets = 6;
+        [Range(0, 20)]
+
+
+        readonly float _damage = 30;
+        bool _canShoot = true;
+        [SerializeField] float _reloadTime;
+        AudioSource _audioSource;
+        [Header("Sounds")]
+        [SerializeField] AudioClip[] _shootSounds;
+        AudioClip _shootSound;
+
+        [SerializeField] AudioClip _emptySound;
+        [Header("Effects")]
+        [SerializeField] GameObject _shootEffect;
+        Dictionary<string, GameObject> _effects;
+        [SerializeField] List<string> _effectsName;
+        [SerializeField] List<GameObject> _effect;
+
+        // bhaptic
+        [Header("Vr settings")]
+        [SerializeField] SteamVR_Action_Boolean _fireAction;
+        Interactable _interactable;
+        BhapticConnect _bhapticConnect;
+
+        private void Start()
         {
-            SteamVR_Input_Sources source = _interactable.attachedToHand.handType;
-            if (_fireAction[source].stateDown)
+            _maxBullets = _bullets;
+            _audioSource = GetComponent<AudioSource>();
+            _shootSound = _shootSounds[Random.Range(0, _shootSounds.Length)];
+            _bhapticConnect = GetComponent<BhapticConnect>();
+            _bhapticConnect.shootingPoint = _shootPoint;
+            _interactable = GetComponent<Interactable>();
+            _shootAnimationSpeed = _fireRate / 2;
+            _drumOTransform = _drum.gameObject.transform;
+            if (_audioSource == null)
+                Debug.LogError("No audiosource!");
+            if (_effectsName.Count == _effect.Count)
+                for (int i = 0; i < _effectsName.Count; ++i)
+                    _effects.Add(_effectsName[i], _effect[i]);
+            else
+                Debug.LogError($"Error, effectsName and effects must be same number! {_effectsName.Count} !={ _effect.Count} ");
+        }
+        private void Update()
+        {
+            if (!_canShoot)
+                return;
+            if (_interactable.attachedToHand != null)
             {
-                Shoot();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && _bullets != _maxBullets)
-        {
-            Reload();
-        }
-    }
-    #region shoot
-    public void Shoot()
-    {
-        if (_bullets > 0)
-        {
-            --_bullets;
-
-            _audioSource.PlayOneShot(_shootSound);
-            // particle effects
-            _shootEffect.SetActive(false);
-            _shootEffect.SetActive(true);
-            // Trigger effect
-            ActivateTrigger();
-            Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
-            if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
-            {
-                if (raycastHit.transform.tag == "Player")
+                SteamVR_Input_Sources source = _interactable.attachedToHand.handType;
+                if (_fireAction[source].stateDown)
                 {
-                    // raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
-                    _bhapticConnect.Play(raycastHit: raycastHit);
+                    Shoot();
                 }
-                // else if (_effects.ContainsKey(raycastHit.transform.tag))
-                // Instantiate(_effects[raycastHit.transform.tag], raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
             }
+            if (Input.GetKeyDown(KeyCode.Space))
+                Shoot();
+            else if (Input.GetKeyDown(KeyCode.R) && _bullets != _maxBullets)
+                Reload();
+        }
+        #region shoot
+        public void Shoot()
+        {
+            if (_bullets > 0)
+            {
+                --_bullets;
+                _audioSource.PlayOneShot(_shootSound);
+                // particle effects
+                _shootEffect.SetActive(false);
+                _shootEffect.SetActive(true);
+                // Trigger and drum effect
+                ActivateShootAnimation();
+                Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
+                if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
+                {
+                    if (raycastHit.transform.tag == "Player")
+                    {
+                        // raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
+                        _bhapticConnect.Play(raycastHit: raycastHit);
+                    }
+                    // else if (_effects.ContainsKey(raycastHit.transform.tag))
+                    // Instantiate(_effects[raycastHit.transform.tag], raycastHit.point, Quaternion.LookRotation(raycastHit.normal));
+                }
 
-            StartCoroutine(FireRateTimer());
+                StartCoroutine(FireRateTimer());
+                _canShoot = false;
+            }
+            else
+            {
+                _audioSource.PlayOneShot(_emptySound);
+            }
+        }
+        IEnumerator FireRateTimer()
+        {
+            yield return new WaitForSeconds(_fireRate);
+            _canShoot = true;
+        }
+        void ActivateShootAnimation()
+        {
+            _trigger.DOLocalRotate(new Vector3(0, 25, 0), _shootAnimationSpeed);
+            _drumOTransform.DOLocalRotateQuaternion(RotationForIndex(_bullets), _shootAnimationSpeed);
+            StartCoroutine(ReturnTrigger());
+        }
+        Quaternion RotationForIndex(int curIndex)
+        {
+            float angle = AngleForIndex(curIndex);
+            return Quaternion.AngleAxis(angle, Vector3.left);
+        }
+        float AngleForIndex(int curIndex)
+        {
+            return 360.0f * ((float)curIndex / (float)_maxBullets);
+        }
+        IEnumerator ReturnTrigger()
+        {
+            yield return new WaitForSeconds(_shootAnimationSpeed);
+            _trigger.DOLocalRotate(new Vector3(0, 0, 0), _fireRate);
+        }
+
+
+        #endregion
+        #region reload
+        public void Reload()
+        {
+            // start ReloadAnimation
+            //
+            _drum.Open();
             _canShoot = false;
+            _bullets = _maxBullets;
+            StartCoroutine(EndReloadTimer());
+
         }
-        else
+        IEnumerator EndReloadTimer()
         {
-            _audioSource.PlayOneShot(_emptySound);
+            yield return new WaitForSeconds(_reloadTime);
+            _canShoot = true;
+            _drum.Close();
         }
-    }
-    IEnumerator FireRateTimer()
-    {
-        yield return new WaitForSeconds(_fireRate);
-        _canShoot = true;
-    }
-    void ActivateTrigger()
-    {
-        _trigger.DOLocalRotate(new Vector3(0, 25, 0), _triggerAnimation);
-        StartCoroutine(ReturnTrigger());
-    }
-    IEnumerator ReturnTrigger()
-    {
-        yield return new WaitForSeconds(_triggerAnimation);
-        _trigger.DOLocalRotate(new Vector3(0, 0, 0), _triggerAnimation);
-    }
-    IEnumerator TweenRotation(Transform trans, Quaternion destRot, float speed, float threshold)
-    {
-        float angleDist = Quaternion.Angle(trans.rotation, destRot);
-
-        while (angleDist > threshold)
-        {
-            trans.rotation = Quaternion.RotateTowards(trans.rotation, destRot, Time.deltaTime * speed);
-            yield return null;
-
-            angleDist = Quaternion.Angle(trans.rotation, destRot);
-        }
-    }
-    #endregion
-    #region reload
-    public void Reload()
-    {
-        // start ReloadAnimation
-        //
-        _drum.Open();
-        _canShoot = false;
-        _bullets = _maxBullets;
-        StartCoroutine(EndReloadTimer());
+        #endregion
 
     }
-    IEnumerator EndReloadTimer()
-    {
-        yield return new WaitForSeconds(_reloadTime);
-        _canShoot = true;
-        _drum.Close();
-    }
-    #endregion
-
 }
