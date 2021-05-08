@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Bhaptics.Tact.Unity;
+using DG.Tweening;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
 public class Colt : MonoBehaviour
 {
-    [SerializeField] byte _bullets = 6;
-    byte _maxBullets;
+    [Header("GameObjects")]
     [SerializeField] Transform _shootPoint;
-    [SerializeField] float _fireRate = 0.3f;
-    [SerializeField] GameObject _shootEffect;
+    [SerializeField] Transform _trigger;
     [SerializeField] Drum _drum;
+
+    [Header("Gun settings")]
+    [SerializeField] float _fireRate = 0.3f;
+    float _triggerAnimation;
+    byte _maxBullets;
+    [SerializeField] byte _bullets = 6;
+    [Range(0, 20)]
+
 
     readonly float _damage = 30;
     bool _canShoot = true;
@@ -24,15 +31,16 @@ public class Colt : MonoBehaviour
 
     [SerializeField] AudioClip _emptySound;
     [Header("Effects")]
+    [SerializeField] GameObject _shootEffect;
     Dictionary<string, GameObject> _effects;
     [SerializeField] List<string> _effectsName;
     [SerializeField] List<GameObject> _effect;
 
     // bhaptic
-    BhapticConnect _bhapticConnect;
     [Header("Vr settings")]
-    [SerializeField] SteamVR_Action_Boolean fireAction;
+    [SerializeField] SteamVR_Action_Boolean _fireAction;
     Interactable _interactable;
+    BhapticConnect _bhapticConnect;
 
     private void Start()
     {
@@ -42,6 +50,7 @@ public class Colt : MonoBehaviour
         _bhapticConnect = GetComponent<BhapticConnect>();
         _bhapticConnect.shootingPoint = _shootPoint;
         _interactable = GetComponent<Interactable>();
+        _triggerAnimation = _fireRate / 2;
         if (_audioSource == null)
             Debug.LogError("No audiosource!");
         if (_effectsName.Count == _effect.Count)
@@ -57,7 +66,7 @@ public class Colt : MonoBehaviour
         if (_interactable.attachedToHand != null)
         {
             SteamVR_Input_Sources source = _interactable.attachedToHand.handType;
-            if (fireAction[source].stateDown)
+            if (_fireAction[source].stateDown)
             {
                 Shoot();
             }
@@ -78,12 +87,13 @@ public class Colt : MonoBehaviour
         if (_bullets > 0)
         {
             --_bullets;
-            _audioSource.PlayOneShot(_shootSound);
 
+            _audioSource.PlayOneShot(_shootSound);
             // particle effects
             _shootEffect.SetActive(false);
             _shootEffect.SetActive(true);
-
+            // Trigger effect
+            ActivateTrigger();
             Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
             if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
             {
@@ -111,7 +121,13 @@ public class Colt : MonoBehaviour
     }
     void ActivateTrigger()
     {
-
+        _trigger.DOLocalRotate(new Vector3(0, 25, 0), _triggerAnimation);
+        StartCoroutine(ReturnTrigger());
+    }
+    IEnumerator ReturnTrigger()
+    {
+        yield return new WaitForSeconds(_triggerAnimation);
+        _trigger.DOLocalRotate(new Vector3(0, 0, 0), _triggerAnimation);
     }
     IEnumerator TweenRotation(Transform trans, Quaternion destRot, float speed, float threshold)
     {

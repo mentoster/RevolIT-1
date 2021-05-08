@@ -30668,16 +30668,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc2172dc6978804dba751495a7dee61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullets: 6
   _shootPoint: {fileID: 156585556}
-  _fireRate: 0.15
-  _shootEffect: {fileID: 670735014}
+  _trigger: {fileID: 8125893357102585419}
   _drum: {fileID: 2892741007178219285}
+  _fireRate: 0.15
+  _bullets: 6
+  _animationSpeed: 1
   _reloadTime: 3
   _shootSounds:
   - {fileID: 8300000, guid: 983125b0780cc624e8e87c862befd60e, type: 3}
   - {fileID: 8300000, guid: 38918687893f74d41932133308b1d2ff, type: 3}
   _emptySound: {fileID: 8300000, guid: 4baf81ed33d3d8b4895b21a516cfd022, type: 3}
+  _shootEffect: {fileID: 670735014}
   _effectsName: []
   _effect: []
   fireAction:
