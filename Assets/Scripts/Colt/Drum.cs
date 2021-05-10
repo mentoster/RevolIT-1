@@ -80,6 +80,6 @@ public class Drum : MonoBehaviour
     }
     float AngleForIndex(int curIndex)
     {
-        return 360.0f * ((float)curIndex / (float)6);
+        return 360.0f * ((float)curIndex / (float)6) + 25;
     }
 }
