@@ -14,31 +14,41 @@ public class Drum : MonoBehaviour
     [SerializeField] AudioClip _openSound;
     [SerializeField] AudioClip _rotateSound;
     [SerializeField] AudioClip _closeSound;
-    Rigidbody m_Rigidbody;
+
     [SerializeField]
     float _maxRotationVelocity = 3;
     float _rotationVelocity;
 
     bool _IsOpen = false;
-    Transform _parentTransfrorm;
+    bool _stopSpin = false;
 
+    Quaternion rotationTarget;
 
     AudioSource _audioSource;
     private void Start()
     {
-        _parentTransfrorm = transform.parent.transform;
+
         _audioSource = gameObject.GetComponent<AudioSource>();
-        m_Rigidbody = gameObject.GetComponent<Rigidbody>();
         GenerateBullets();
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (_IsOpen)
+
+        if (_rotationVelocity > 0 && _IsOpen)
         {
-            _rotationVelocity -= _maxRotationVelocity / 200;
+            _rotationVelocity -= _maxRotationVelocity / 250;
             transform.Rotate(_rotationVelocity, 0, 0);
         }
+        if (_stopSpin && transform.localRotation.x < -0.2f && transform.localRotation.x > -0.3f)
+        {
+            print($"43. Drum -> transform.localRotation.x : {transform.localRotation.x}");
+            _IsOpen = false;
+            _stopSpin = false;
+            gameObject.transform.DOLocalRotateQuaternion(RotationForIndex(0), 1);
+        }
+
     }
+
     public void Open()
     {
         _ejectCollision.SetActive(true);
@@ -46,17 +56,24 @@ public class Drum : MonoBehaviour
         _audioSource.PlayOneShot(_rotateSound);
         _IsOpen = true;
         for (var i = 0; i < _bullets.Length; i++)
-            _bullets[i].GetComponent<Rigidbody>().isKinematic = false;
+            foreach (var bullet in _bullets[i].transform.parent.gameObject.GetComponentsInChildren<Rigidbody>())
+                bullet.isKinematic = false;
+
+
         _rotationVelocity = _maxRotationVelocity;
-        // animations to open
+        // spin animations
+        StartCoroutine(StopAnimation());
+    }
+    IEnumerator StopAnimation()
+    {
+        yield return new WaitForSeconds(2f);
+        _stopSpin = true;
     }
 
     public void Close()
     {
         _audioSource.PlayOneShot(_closeSound);
-        _IsOpen = false;
         _ejectCollision.SetActive(false);
-        // animations to close
         GenerateBullets();
     }
     void GenerateBullets()
@@ -71,7 +88,7 @@ public class Drum : MonoBehaviour
     public void Shoot(byte _bullets, float _shootAnimationSpeed)
     {
         print("shoot");
-        this.gameObject.transform.DOLocalRotateQuaternion(RotationForIndex(_bullets), _shootAnimationSpeed);
+        gameObject.transform.DOLocalRotateQuaternion(RotationForIndex(_bullets), _shootAnimationSpeed);
     }
     Quaternion RotationForIndex(int curIndex)
     {
