@@ -42,6 +42,7 @@ namespace Assets.Scripts.Colt
         // bhaptic
         [Header("Vr settings")]
         [SerializeField] SteamVR_Action_Boolean _fireAction;
+        [SerializeField] SteamVR_Action_Boolean _reloadAction;
         Interactable _interactable;
         BhapticConnect _bhapticConnect;
 
@@ -74,11 +75,16 @@ namespace Assets.Scripts.Colt
                 {
                     Shoot();
                 }
+                else if (_reloadAction[source].stateDown)
+                {
+                    Reload();
+                }
             }
             if (Input.GetKeyDown(KeyCode.Space))
                 Shoot();
             else if (Input.GetKeyDown(KeyCode.R) && _bullets != _maxBullets)
                 Reload();
+
         }
         #region shoot
         public void Shoot()

@@ -30631,6 +30631,7 @@ GameObject:
   - component: {fileID: 8296172668712196080}
   - component: {fileID: 8296172668712196079}
   - component: {fileID: 8296172668712196086}
+  - component: {fileID: 8296172668712196087}
   m_Layer: 0
   m_Name: ColtWalker
   m_TagString: Untagged
@@ -30663,7 +30664,10 @@ MonoBehaviour:
   _effectsName: []
   _effect: []
   _fireAction:
-    actionPath: 
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
+  _reloadAction:
+    actionPath: /actions/default/in/Teleport
     needsReinit: 0
 --- !u!82 &8296172668712196080
 AudioSource:
@@ -30869,7 +30873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateActionSetOnAttach:
-    actionSetPath: /actions/gun
+    actionSetPath: 
   hideHandOnAttach: 1
   hideSkeletonOnAttach: 0
   hideControllerOnAttach: 0
@@ -30932,8 +30936,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0055532604, y: 0.0005038065, z: 0.0017414845}
-  m_Center: {x: 0.0011434238, y: -0.00002495306, z: -0.00020985796}
+  m_Size: {x: 0.0046492484, y: 0.0005038065, z: 0.00059441704}
+  m_Center: {x: 0.001595428, y: -0.000024953062, z: 0.00036367637}
+--- !u!65 &8296172668712196087
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668712196078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0016885459, y: 0.0005038065, z: 0.0017414849}
+  m_Center: {x: -0.000788933, y: -0.00002495306, z: -0.00020985809}
 --- !u!23 &8739799201615833379
 MeshRenderer:
   m_ObjectHideFlags: 0
