@@ -82,7 +82,7 @@ namespace Assets.Scripts.Colt
             }
             if (Input.GetKeyDown(KeyCode.Space))
                 Shoot();
-            else if (Input.GetKeyDown(KeyCode.R) && _bullets != _maxBullets)
+            else if (Input.GetKeyDown(KeyCode.R))
                 Reload();
 
         }
@@ -135,16 +135,38 @@ namespace Assets.Scripts.Colt
             yield return new WaitForSeconds(_shootAnimationSpeed);
             _trigger.DOLocalRotate(new Vector3(0, 0, 0), _fireRate);
         }
+        void HandHoverUpdate(Hand hand)
+        {
+            GrabTypes grabType = hand.GetGrabStarting();
+            bool isGrabEnding = hand.IsGrabEnding(gameObject);
+            //GRAB THE OBJECT
+            if (_interactable.attachedToHand == null && grabType != GrabTypes.None)
+            {
+                hand.AttachObject(gameObject, grabType);
+                hand.HoverLock(_interactable);
+                // hand.HideGrabHint();
+            }
+            //release
+            else if (isGrabEnding)
+            {
+                hand.DetachObject(gameObject);
+                // hand.HoverUnlock(_interactable);
+            }
+        }
+
         #endregion
         #region reload
         public void Reload()
         {
-            // start ReloadAnimation
-            //
-            _drum.Open();
-            _canShoot = false;
-            _bullets = _maxBullets;
-            StartCoroutine(EndReloadTimer());
+            if (_bullets != _maxBullets)
+            {
+                // start ReloadAnimation
+                //
+                _drum.Open();
+                _canShoot = false;
+                _bullets = _maxBullets;
+                StartCoroutine(EndReloadTimer());
+            }
 
         }
         IEnumerator EndReloadTimer()

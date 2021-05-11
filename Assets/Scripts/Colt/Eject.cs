@@ -9,7 +9,7 @@ public class Eject : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            print($"Eject {other.gameObject}");
+            // print($"Eject {other.gameObject}");
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             other.gameObject.GetComponent<CapsuleCollider>().enabled = true;
             rb.AddForce(new Vector3(-_pushPower, _pushPower / 2, 0), ForceMode.Force);

@@ -41,7 +41,7 @@ public class Drum : MonoBehaviour
         }
         if (_stopSpin && transform.localRotation.x < -0.2f && transform.localRotation.x > -0.3f)
         {
-            print($"43. Drum -> transform.localRotation.x : {transform.localRotation.x}");
+            // print($"43. Drum -> transform.localRotation.x : {transform.localRotation.x}");
             _IsOpen = false;
             _stopSpin = false;
             gameObject.transform.DOLocalRotateQuaternion(RotationForIndex(0), 1);
@@ -87,7 +87,7 @@ public class Drum : MonoBehaviour
     }
     public void Shoot(byte _bullets, float _shootAnimationSpeed)
     {
-        print("shoot");
+        // print("shoot");
         gameObject.transform.DOLocalRotateQuaternion(RotationForIndex(_bullets), _shootAnimationSpeed);
     }
     Quaternion RotationForIndex(int curIndex)
