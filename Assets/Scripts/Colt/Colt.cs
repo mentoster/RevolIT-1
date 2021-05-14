@@ -106,8 +106,8 @@ namespace Assets.Scripts.Colt
                 {
                     if (raycastHit.transform.tag == "Player")
                     {
-                        raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
-                        UpdateScore(_damage);
+                        var damageInfo = raycastHit.transform.GetComponent<TargetPart>().TakeDamage(_damage);
+                        UpdateScore(damageInfo.Item1, damageInfo.Item2);
                         _bhapticConnect.Play(raycastHit: raycastHit);
                     }
                     // else if (_effects.ContainsKey(raycastHit.transform.tag))
@@ -138,10 +138,12 @@ namespace Assets.Scripts.Colt
             yield return new WaitForSeconds(_shootAnimationSpeed);
             _trigger.DOLocalRotate(new Vector3(0, 0, 0), _fireRate);
         }
-        void UpdateScore(float addScores)
+        void UpdateScore(bool kill,float addScores)
         {
             _scores += addScores;
-            _scoresText.text = $"Очки: \n{_scores}";
+            if (kill)
+                _scores += 50;
+            _scoresText.text = $"{_scores}";
         }
         #endregion
         #region reload
