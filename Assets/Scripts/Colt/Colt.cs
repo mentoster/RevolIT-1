@@ -14,6 +14,8 @@ namespace Assets.Scripts.Colt
         [SerializeField] Transform _shootPoint;
         [SerializeField] Transform _trigger;
         [SerializeField] Drum _drum;
+        float _scores = 0;
+        [SerializeField] TMPro.TMP_Text _scoresText;
         Transform _drumOTransform;
 
         [Header("Gun settings")]
@@ -104,7 +106,8 @@ namespace Assets.Scripts.Colt
                 {
                     if (raycastHit.transform.tag == "Player")
                     {
-                        // raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
+                        raycastHit.transform.GetComponent<Target>().TakeDamage(_damage);
+                        UpdateScore(_damage);
                         _bhapticConnect.Play(raycastHit: raycastHit);
                     }
                     // else if (_effects.ContainsKey(raycastHit.transform.tag))
@@ -135,25 +138,11 @@ namespace Assets.Scripts.Colt
             yield return new WaitForSeconds(_shootAnimationSpeed);
             _trigger.DOLocalRotate(new Vector3(0, 0, 0), _fireRate);
         }
-        void HandHoverUpdate(Hand hand)
+        void UpdateScore(float addScores)
         {
-            GrabTypes grabType = hand.GetGrabStarting();
-            bool isGrabEnding = hand.IsGrabEnding(gameObject);
-            //GRAB THE OBJECT
-            if (_interactable.attachedToHand == null && grabType != GrabTypes.None)
-            {
-                hand.AttachObject(gameObject, grabType);
-                hand.HoverLock(_interactable);
-                // hand.HideGrabHint();
-            }
-            //release
-            else if (isGrabEnding)
-            {
-                hand.DetachObject(gameObject);
-                // hand.HoverUnlock(_interactable);
-            }
+            _scores += addScores;
+            _scoresText.text = $"Очки: \n{_scores}";
         }
-
         #endregion
         #region reload
         public void Reload()

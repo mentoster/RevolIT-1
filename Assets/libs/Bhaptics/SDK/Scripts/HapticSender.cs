@@ -16,10 +16,7 @@ namespace Bhaptics.Tact.Unity
         public float yOffsetMultiplier = 1f;
 
 
-        public void Play(PositionTag posTag = PositionTag.Default)
-        {
-            Play(posTag, 0, 0);
-        }
+        public void Play(PositionTag posTag = PositionTag.Default) => Play(posTag, 0, 0);
 
         public void Play(PositionTag posTag, Vector3 contactPos, Collider targetCollider)
         {
@@ -103,7 +100,7 @@ namespace Bhaptics.Tact.Unity
                 BhapticsLogger.LogInfo("Cannot find TactClip {0} {1} {2}", posTag, angleX, offsetY);
                 return;
             }
-            
+
             clip.Play(1f, 1f, angleX, offsetY * yOffsetMultiplier);
         }
     }

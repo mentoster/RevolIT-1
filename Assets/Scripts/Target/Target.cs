@@ -11,11 +11,10 @@ public class Target : MonoBehaviour, ITarget
         health -= damage;
         if (health < 0)
             Die();
-
     }
     void Die()
     {
-        // Animations to die
+        Destroy(gameObject);
     }
 
 }
