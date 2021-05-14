@@ -28,7 +28,7 @@ namespace Bhaptics.Tact.Unity
                 pos = detect.PositionTag;
             if (_tactSender != null)
             {
-                print($"Send effect to {raycastHit}, pis = {pos}");
+                print($"Send effect to {raycastHit}, pos = {pos}");
                 _tactSender.Play(pos, raycastHit);
             }
         }
