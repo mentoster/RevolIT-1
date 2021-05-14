@@ -104,6 +104,7 @@ namespace Assets.Scripts.Colt
                 Debug.DrawRay(_shootPoint.position, _shootPoint.forward * 100, Color.red, 1);
                 if (Physics.Raycast(_shootPoint.position, _shootPoint.forward * 100, out RaycastHit raycastHit, maxDistance: 1000))
                 {
+                    print($"107. Colt -> shoot at: {raycastHit.transform.gameObject}");
                     if (raycastHit.transform.tag == "Player")
                     {
                         var damageInfo = raycastHit.transform.GetComponent<TargetPart>().TakeDamage(_damage);
@@ -138,7 +139,7 @@ namespace Assets.Scripts.Colt
             yield return new WaitForSeconds(_shootAnimationSpeed);
             _trigger.DOLocalRotate(new Vector3(0, 0, 0), _fireRate);
         }
-        void UpdateScore(bool kill,float addScores)
+        void UpdateScore(bool kill, float addScores)
         {
             _scores += addScores;
             if (kill)
