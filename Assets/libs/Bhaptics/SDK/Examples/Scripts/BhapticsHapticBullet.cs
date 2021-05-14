@@ -14,5 +14,6 @@ public class BhapticsHapticBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Destroy(gameObject);
     }
 }

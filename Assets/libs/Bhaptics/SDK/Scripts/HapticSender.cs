@@ -69,7 +69,7 @@ namespace Bhaptics.Tact.Unity
                     if (RightArmClips != null && RightArmClips.Length > 0)
                     {
                         int randIndex = Random.Range(0, RightArmClips.Length);
-                        return RightArmClips[randIndex];
+                        return  RightArmClips[randIndex];
                     }
                     break;
                 case PositionTag.LeftArm:
@@ -103,7 +103,7 @@ namespace Bhaptics.Tact.Unity
                 BhapticsLogger.LogInfo("Cannot find TactClip {0} {1} {2}", posTag, angleX, offsetY);
                 return;
             }
-
+            
             clip.Play(1f, 1f, angleX, offsetY * yOffsetMultiplier);
         }
     }
