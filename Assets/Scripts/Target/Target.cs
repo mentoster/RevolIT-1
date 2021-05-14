@@ -15,7 +15,7 @@ public class Target : MonoBehaviour, ITarget
         if (health < 0)
         {
             Die();
-            return Tuple.Create(true, damage);
+            return Tuple.Create(true, 0);
         }
         return Tuple.Create(false, damage);
     }
