@@ -66,7 +66,6 @@ public class FlyCamera : MonoBehaviour
         {
             transform.Translate(p);
         }
-
     }
 
     private Vector3 GetBaseInput()
