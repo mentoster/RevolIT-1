@@ -65,6 +65,7 @@ public class Connetion : MonoBehaviourPunCallbacks
         localplayer.GetComponent<playerHandler>().MakeLocal(ShootingSpawnPoints[players - 1], players - 1);
         localpistol.GetComponent<PistolHandler>().spawn("player", players - 1);
         SceneCamera.SetActive(false);
+        sceneController.Lamp_Turner(false);
     }
 
     public override void OnCreatedRoom()
