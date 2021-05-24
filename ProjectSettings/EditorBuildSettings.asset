@@ -9,5 +9,7 @@ EditorBuildSettings:
     path: Assets/WesternSaloon/DemoScene/Saloon_demoScene.unity
     guid: 14277d48492a1fc4eb5c6f9179baed4c
   m_configObjects:
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: ae7953f7386982840bfd45a1a516409c,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e197128e1160c1144b4c82e2b81632a9,
       type: 2}
