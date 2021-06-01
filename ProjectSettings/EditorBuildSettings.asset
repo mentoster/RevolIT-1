@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/VrShootScene.unity
-    guid: af62da3ab605d1941aca7b2c701cca3b
-  - enabled: 1
     path: Assets/WesternSaloon/DemoScene/Saloon_demoScene.unity
     guid: 14277d48492a1fc4eb5c6f9179baed4c
   m_configObjects:
