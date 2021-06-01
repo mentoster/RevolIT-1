@@ -27854,10 +27854,80 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onHeldUpdate.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7422377907978770610}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onHeldUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onHeldUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7422377907978770610}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeInHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onHeldUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onHeldUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DetachedFromHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onPickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613186, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: onHeldUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613188, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: hideHandOnAttach
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1450291534928613214, guid: bde96cbb40302a9409ab0791a0c1f704,
         type: 3}
       propertyPath: m_Name
       value: ColtWalker
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450291534928613215, guid: bde96cbb40302a9409ab0791a0c1f704,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2484616657070980429, guid: bde96cbb40302a9409ab0791a0c1f704,
         type: 3}
@@ -27921,3 +27991,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde96cbb40302a9409ab0791a0c1f704, type: 3}
+--- !u!1 &7422377907978770609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1450291534928613214, guid: bde96cbb40302a9409ab0791a0c1f704,
+    type: 3}
+  m_PrefabInstance: {fileID: 7422377907978770608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7422377907978770610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422377907978770609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee7158353c2c2542847080c901563ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
