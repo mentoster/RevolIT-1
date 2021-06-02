@@ -6082,18 +6082,18 @@ MonoBehaviour:
   head:
     vrTarget: {fileID: 377303217}
     rigTarget: {fileID: 1113604214}
-    trackingPositionOffSet: {x: 0, y: -0.1, z: -0.15}
+    trackingPositionOffSet: {x: 0, y: -0.1, z: 0}
     trackingRotationOffSet: {x: 0, y: 0, z: 0}
   leftHand:
     vrTarget: {fileID: 377309031}
     rigTarget: {fileID: 2012693060}
-    trackingPositionOffSet: {x: 0, y: 0, z: 0}
-    trackingRotationOffSet: {x: 0, y: 0, z: 0}
+    trackingPositionOffSet: {x: -0.03, y: 0.06, z: -0.19}
+    trackingRotationOffSet: {x: -37.5, y: -33.5, z: 120.2}
   rightHand:
     vrTarget: {fileID: 377318033}
     rigTarget: {fileID: 1205127349}
-    trackingPositionOffSet: {x: 0, y: 0, z: -0.07}
-    trackingRotationOffSet: {x: -37.5, y: 21.7, z: -116.1}
+    trackingPositionOffSet: {x: 0.03, y: 0.06, z: -0.19}
+    trackingRotationOffSet: {x: -37.5, y: 33.5, z: -120.2}
   headConstraint: {fileID: 1113604214}
   turnSmoothness: 3
 --- !u!1 &1724255208
