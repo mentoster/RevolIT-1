@@ -6082,7 +6082,7 @@ MonoBehaviour:
   head:
     vrTarget: {fileID: 377303217}
     rigTarget: {fileID: 1113604214}
-    trackingPositionOffSet: {x: 0, y: -0.1, z: 0}
+    trackingPositionOffSet: {x: 0, y: -0.15, z: 0}
     trackingRotationOffSet: {x: 0, y: 0, z: 0}
   leftHand:
     vrTarget: {fileID: 377309031}
