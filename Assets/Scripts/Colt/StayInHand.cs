@@ -17,17 +17,10 @@ public class StayInHand : MonoBehaviour
         _colt.enabled = true;
         // get hand transform
         _parent = transform.parent;
+        _parent.GetComponent<MeshRenderer>().enabled = false;
     }
     public void DetachedFromHand()
     {
         transform.parent = _parent;
-        try
-        {
-            _parent.GetComponent<MeshRenderer>().enabled = false;
-        }
-        catch (System.Exception ex)
-        {
-            print("StayInHand -> There is no material in your hands");
-        }
     }
 }
