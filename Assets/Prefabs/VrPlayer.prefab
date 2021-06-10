@@ -5107,6 +5107,7 @@ MonoBehaviour:
   _VRRig: {fileID: 0}
   _dieText: {fileID: 7950481808008316401}
   _dieTextTimer: 7
+  _volume: {fileID: 0}
 --- !u!20 &4405897459305106356
 Camera:
   m_ObjectHideFlags: 0
@@ -5222,7 +5223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: e7b7f75bba24dfc448c218e111e5f332, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -6618,7 +6619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &575954143520554878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7166,7 +7167,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8540273238821261859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07994bfe8b0e4adb97d706de5dea48d5, type: 3}
   m_Name: 
