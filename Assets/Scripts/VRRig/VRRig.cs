@@ -6,7 +6,7 @@
 public class VRMap
 {
     [SerializeField]
-    private Transform vrTarget, rigTarget;
+    Transform vrTarget, vrDieObject, rigTarget;
 
     [SerializeField]
     public Vector3 trackingPositionOffSet, trackingRotationOffSet;
@@ -19,17 +19,29 @@ public class VRMap
         rigTarget.position = vrTarget.TransformPoint(trackingPositionOffSet);
         rigTarget.rotation = vrTarget.rotation * Quaternion.Euler(trackingRotationOffSet);
     }
+    public void Die()
+    {
+        vrTarget = vrDieObject;
+
+        var collider = vrDieObject.gameObject.GetComponent<Collider>();
+        var rigidbody = vrDieObject.gameObject.GetComponent<Rigidbody>();
+
+        if (collider != null)
+            collider.enabled = true;
+        else
+            Debug.LogWarning("vrDieObject collider is null, please set collider on it");
+
+        if (rigidbody != null)
+            rigidbody.isKinematic = false;
+        else
+            Debug.LogWarning("vrDieObject rigidbody is null, please set rigidbody on it");
+    }
 }
 
 public class VRRig : MonoBehaviour
 {
     [Header("VR objects")]
-    [SerializeField]
-    private VRMap head;
-    [SerializeField]
-    private VRMap leftHand;
-    [SerializeField]
-    private VRMap rightHand;
+    public VRMap head, leftHand, rightHand;
 
     [Space]
 

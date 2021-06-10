@@ -1,5 +1,5 @@
 using System;
-using System.Diagnostics;
+using System.Collections;
 using UnityEngine;
 interface ITarget
 {
@@ -7,6 +7,9 @@ interface ITarget
 }
 public class Target : MonoBehaviour, ITarget
 {
+    [SerializeField] VRRig _VRRig;
+    [SerializeField] GameObject _dieText;
+    [SerializeField] Byte _dieTextTimer=1;
     float health = 100;
     public Tuple<bool, float> TakeDamage(float damage)
     {
@@ -19,9 +22,16 @@ public class Target : MonoBehaviour, ITarget
         }
         return Tuple.Create(false, damage);
     }
-    void Die()
+    public void Die()
     {
-        Destroy(gameObject);
+        _dieText.SetActive(true);
+        StartCoroutine(HideDieText());
+        _VRRig.head.Die();
+        _VRRig.leftHand.Die();
+        _VRRig.rightHand.Die();
     }
-
+    IEnumerator HideDieText () {
+        yield return new WaitForSeconds (_dieTextTimer);
+        _dieText.SetActive(false);
+    }
 }
